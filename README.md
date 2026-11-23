@@ -2,7 +2,7 @@
 
 Official implementation of **"FedPer-Prox-XAI: An Explainable Personalized Federated Learning Framework for Robust Intrusion Detection in Heterogeneous IoMT Networks"** (under review).
 
-Federated intrusion detection for heterogeneous IoMT environments, combining FedPer (personalized classification heads), FedProx (proximal regularization), temperature-softened aggregation, and multi-tier gradient-based feature attribution. Deployed on a physical Raspberry Pi cluster and evaluated over four network profiles (WiFi / 5G / 4G / 3G).
+Federated intrusion detection for heterogeneous IoMT environments, combining FedPer (personalized classification heads), FedProx (proximal regularization), temperature-softened aggregation, and multi-tier gradient-based feature attribution. Deployed on a physical Raspberry Pi cluster and evaluated over four network profiles.
 
 ## Architecture
 
@@ -215,9 +215,9 @@ sizes, dropout, XAI sample sizes, and the energy/network settings described abov
 ## Citation
 
 ```bibtex
-@article{yacoubi2026fedperproxxai,
+@article{fedperproxxai,
   title   = {FedPer-Prox-XAI: An Explainable Personalized Federated Learning Framework for Robust Intrusion Detection in Heterogeneous IoMT Networks},
-  author  = {Yacoubi, Mohammed and Drocourt, Cyril and Moussaoui, Omar and Utard, Gil},
+  author  = {ANONYME},
   journal = {Array},
   year    = {2026},
   note    = {Under review}

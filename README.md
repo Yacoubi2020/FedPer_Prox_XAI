@@ -224,10 +224,3 @@ sizes, dropout, XAI sample sizes, and the energy/network settings described abov
 }
 ```
 
-## License
-
-MIT License — see [LICENSE](LICENSE).
-
-## Acknowledgements
-
-This work is supported by the ANR France 2030 MAIA project, MIS Laboratory, Université de Picardie Jules Verne (UPJV).

@@ -1,0 +1,20 @@
+% Requires \usepackage{booktabs}
+\begin{table}[t]
+\centering
+\caption{Computational complexity analysis of FedPer-Prox-XAI with $d{=}23$ input features, $C{=}7$ classes, and backbone layers $[256, 128, 64]$.}
+\label{tab:complexity}
+\begin{tabular}{lrl}
+\toprule
+Component & Value & Unit \\
+\midrule
+Total parameters & 50,503 & -- \\
+Backbone (shared) & 48,192 & (95.4%) \\
+Head (personalized) & 2,311 & -- \\
+FLOPs per sample & 99.6 & kFLOPs \\
+Comm. per round (FedPer) & 188.2 & KB \\
+Comm. per round (FedAvg) & 197.3 & KB \\
+Comm. savings & 4.6% & -- \\
+Training memory & 1.42 & MB \\
+\bottomrule
+\end{tabular}
+\end{table}

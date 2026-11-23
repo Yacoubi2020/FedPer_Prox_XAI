@@ -1,0 +1,25 @@
+% Requires \usepackage{booktabs}
+\begin{table*}[t]
+\centering
+\caption{Performance comparison of FedPer-Prox-XAI against baseline methods on IoMT Non-IID data (mean $\pm$ std across clients/seeds).}
+\label{tab:sota_comparison}
+\begin{tabular}{lccccccc}
+\toprule
+Method & Accuracy & F1-Macro & F1-Weighted & Precision & Recall & Cohen's $\kappa$ & MCC \\
+\midrule
+\multicolumn{8}{l}{\textit{Traditional ML (centralized)}} \\
+Random Forest & 0.996 & 0.993 & 0.996 & 0.993 & 0.993 & 0.994 & 0.994 \\
+Decision Tree & 0.996 & 0.993 & 0.996 & 0.993 & 0.993 & 0.994 & 0.994 \\
+KNN & 0.996 & 0.993 & 0.996 & 0.993 & 0.993 & 0.994 & 0.994 \\
+Logistic Regression & 0.993 & 0.987 & 0.993 & 0.988 & 0.987 & 0.990 & 0.990 \\
+\midrule
+\multicolumn{8}{l}{\textit{Deep Learning \& Federated}} \\
+Centralized MLP & 0.996 & 0.992 & 0.996 & 0.993 & 0.992 & 0.994 & 0.994 \\
+Local-only MLP & 0.996 $\pm$ 0.000 & 0.992 $\pm$ 0.000 & 0.996 $\pm$ 0.000 & 0.993 $\pm$ 0.000 & 0.992 $\pm$ 0.000 & 0.994 $\pm$ 0.000 & 0.994 $\pm$ 0.000 \\
+FedAvg & 0.996 $\pm$ 0.000 & 0.992 $\pm$ 0.000 & 0.996 $\pm$ 0.000 & 0.993 $\pm$ 0.000 & 0.992 $\pm$ 0.000 & 0.994 $\pm$ 0.000 & 0.994 $\pm$ 0.000 \\
+FedProx & 0.996 $\pm$ 0.000 & 0.992 $\pm$ 0.000 & 0.996 $\pm$ 0.000 & 0.993 $\pm$ 0.000 & 0.992 $\pm$ 0.000 & 0.994 $\pm$ 0.000 & 0.994 $\pm$ 0.000 \\
+FedPer & 0.996 $\pm$ 0.000 & 0.992 $\pm$ 0.000 & 0.996 $\pm$ 0.000 & 0.993 $\pm$ 0.000 & 0.992 $\pm$ 0.000 & 0.994 $\pm$ 0.000 & 0.994 $\pm$ 0.000 \\
+\textbf{FedPer-Prox-XAI (Ours)} & 0.995 $\pm$ 0.000 & 0.992 $\pm$ 0.000 & 0.995 $\pm$ 0.000 & 0.993 $\pm$ 0.000 & 0.992 $\pm$ 0.000 & 0.994 $\pm$ 0.000 & 0.994 $\pm$ 0.000 \\
+\bottomrule
+\end{tabular}
+\end{table*}

@@ -1,0 +1,111 @@
+{
+  "client_id": 3,
+  "total_time_s": 415.7703297138214,
+  "history": {
+    "train_loss": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "train_acc": [
+      0.04645166666666667,
+      0.046463333333333336,
+      0.046845,
+      0.046465,
+      0.046498333333333336
+    ],
+    "test_loss": [],
+    "test_acc": [],
+    "energy_j": [
+      819.7491,
+      1634.5896,
+      2392.2267,
+      3083.4541,
+      3532.2494
+    ],
+    "comm_mb": [
+      0.3325,
+      0.6664,
+      1.0001,
+      1.3338,
+      1.6677
+    ],
+    "round_time_s": [
+      54.65025520324707,
+      54.002685546875,
+      50.089762926101685,
+      45.76273846626282,
+      29.599467039108276
+    ]
+  },
+  "final_metrics": {
+    "energy_summary": {
+      "total_energy_j": 3537.0362,
+      "total_energy_mah": 192.649,
+      "energy_by_phase": {
+        "download": 0.8101,
+        "training": 3510.0769,
+        "upload": 0.6686,
+        "evaluation": 25.4807
+      },
+      "n_records": 20,
+      "tdp_watts": 15.0,
+      "hardware_sensor": false
+    },
+    "comm_summary": {
+      "network_type": "5g",
+      "total_mb_raw": 1.8435,
+      "total_mb_compressed": 1.6677,
+      "total_energy_j": 0.1084,
+      "n_uploads": 5,
+      "n_downloads": 5,
+      "bandwidth_mbps": 150.0,
+      "latency_ms": 5.0
+    },
+    "client_stats": {
+      "n_samples": 250000,
+      "n_features": 23,
+      "n_classes": 4,
+      "class_names": [
+        "Normal",
+        "RUDY",
+        "ARP",
+        "ApacheKiller"
+      ],
+      "class_distribution": {
+        "ARP": 62500,
+        "ApacheKiller": 62500,
+        "Normal": 62500,
+        "RUDY": 62500
+      },
+      "input_dim": 23,
+      "feature_names": [
+        "http.content_length",
+        "http.request",
+        "http.response.code",
+        "http.response_number",
+        "http.time",
+        "tcp.analysis.initial_rtt",
+        "tcp.connection.fin",
+        "tcp.connection.syn",
+        "tcp.connection.synack",
+        "tcp.flags.cwr",
+        "tcp.flags.ecn",
+        "tcp.flags.fin",
+        "tcp.flags.ns",
+        "tcp.flags.res",
+        "tcp.flags.syn",
+        "tcp.flags.urg",
+        "tcp.urgent_pointer",
+        "ip.frag_offset",
+        "eth.dst.ig",
+        "eth.src.ig",
+        "eth.src.lg",
+        "eth.src_not_group",
+        "arp.isannouncement"
+      ]
+    }
+  }
+}

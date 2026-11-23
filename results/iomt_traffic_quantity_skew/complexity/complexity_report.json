@@ -1,0 +1,170 @@
+{
+  "config": {
+    "input_dim": 23,
+    "num_classes": 7,
+    "backbone_hidden": [
+      256,
+      128,
+      64
+    ],
+    "head_hidden": [
+      32
+    ],
+    "batch_size": 256,
+    "n_clients": 4,
+    "n_rounds": 30
+  },
+  "parameters": {
+    "total": 50503,
+    "backbone": 48192,
+    "head": 2311,
+    "shared_ratio": 0.9542403421578917,
+    "layers": {
+      "backbone.net.0": {
+        "type": "Linear",
+        "params": 6144,
+        "shape": "torch.Size([256, 23])"
+      },
+      "backbone.net.1": {
+        "type": "BatchNorm1d",
+        "params": 512,
+        "shape": "torch.Size([256])"
+      },
+      "backbone.net.4": {
+        "type": "Linear",
+        "params": 32896,
+        "shape": "torch.Size([128, 256])"
+      },
+      "backbone.net.5": {
+        "type": "BatchNorm1d",
+        "params": 256,
+        "shape": "torch.Size([128])"
+      },
+      "backbone.net.8": {
+        "type": "Linear",
+        "params": 8256,
+        "shape": "torch.Size([64, 128])"
+      },
+      "backbone.net.9": {
+        "type": "BatchNorm1d",
+        "params": 128,
+        "shape": "torch.Size([64])"
+      },
+      "head.net.0": {
+        "type": "Linear",
+        "params": 2080,
+        "shape": "torch.Size([32, 64])"
+      },
+      "head.net.3": {
+        "type": "Linear",
+        "params": 231,
+        "shape": "torch.Size([7, 32])"
+      }
+    }
+  },
+  "flops": {
+    "per_sample": 99584,
+    "per_batch": 25493504,
+    "mflops_per_sample": 0.099584,
+    "layer_details": {
+      "backbone.net.0": {
+        "type": "Linear",
+        "shape": "23 -> 256",
+        "flops": 11776
+      },
+      "backbone.net.1": {
+        "type": "BatchNorm1d",
+        "features": 256,
+        "flops": 512
+      },
+      "backbone.net.4": {
+        "type": "Linear",
+        "shape": "256 -> 128",
+        "flops": 65536
+      },
+      "backbone.net.5": {
+        "type": "BatchNorm1d",
+        "features": 128,
+        "flops": 256
+      },
+      "backbone.net.8": {
+        "type": "Linear",
+        "shape": "128 -> 64",
+        "flops": 16384
+      },
+      "backbone.net.9": {
+        "type": "BatchNorm1d",
+        "features": 64,
+        "flops": 128
+      },
+      "head.net.0": {
+        "type": "Linear",
+        "shape": "64 -> 32",
+        "flops": 4096
+      },
+      "head.net.3": {
+        "type": "Linear",
+        "shape": "32 -> 7",
+        "flops": 448
+      }
+    }
+  },
+  "communication": {
+    "backbone_params": 48192,
+    "head_params": 2311,
+    "fedper": {
+      "upload_per_round_per_client_bytes": 192768,
+      "download_per_round_per_client_bytes": 192768,
+      "total_bytes": 46264320,
+      "total_mb": 44.12109375
+    },
+    "fedavg": {
+      "upload_per_round_per_client_bytes": 202012,
+      "download_per_round_per_client_bytes": 202012,
+      "total_bytes": 48482880,
+      "total_mb": 46.23687744140625
+    },
+    "savings_ratio": 0.04575965784210834
+  },
+  "time_complexity": {
+    "local_training": {
+      "description": "Local SGD on one client for E epochs",
+      "complexity": "O(E * N/B * (23*256 + 256*128 + 128*64 + 64*32 + 32*7))",
+      "simplified": "O(E * N * d * H)",
+      "explanation": "Each local epoch processes N/B mini-batches. Forward pass: multiply through 5 layers. Backward pass: same complexity. With E=3 epochs, batch_size B=256."
+    },
+    "proximal_term": {
+      "description": "FedProx proximal regularization computation",
+      "complexity": "O(P_backbone)",
+      "simplified": "O(P)",
+      "explanation": "Computes ||w - w_global||^2 over all backbone parameters. Linear in the number of shared parameters P. mu=0.01."
+    },
+    "aggregation": {
+      "description": "Temperature-softened weighted averaging on server",
+      "complexity": "O(M * P_backbone)",
+      "simplified": "O(M * P)",
+      "explanation": "Server averages backbone parameters from M=4 clients with soft-capped weights w_i = n_i^tau, tau=0.5. Linear in number of clients and backbone parameters."
+    },
+    "full_fl_pipeline": {
+      "description": "Complete federated learning pipeline",
+      "complexity": "O(K * (M * E * N/B * d * H + M * P))",
+      "simplified": "O(K * M * E * N * d * H)",
+      "explanation": "K=30 rounds, each with M=4 clients training E=3 local epochs, plus aggregation. Communication dominates only for very large models."
+    },
+    "shap_gradient_input": {
+      "description": "Gradient x Input attribution (per class)",
+      "complexity": "O(C * N_test * d * H)",
+      "simplified": "O(C * N * d * H)",
+      "explanation": "For each of C=7 classes, computes gradient w.r.t. input for N_test samples. Each gradient computation is one forward + backward pass. Replaces full KernelSHAP which would be O(C * N * 2^d)."
+    }
+  },
+  "memory": {
+    "model_weights_bytes": 202012,
+    "optimizer_state_bytes": 404024,
+    "gradients_bytes": 202012,
+    "fedprox_global_copy_bytes": 192768,
+    "activations_per_batch_bytes": 491520,
+    "total_training_bytes": 1492336,
+    "total_training_mb": 1.4232025146484375
+  }
+}

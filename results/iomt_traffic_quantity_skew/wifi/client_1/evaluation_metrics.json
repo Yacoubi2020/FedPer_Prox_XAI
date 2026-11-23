@@ -1,0 +1,44 @@
+{
+  "classification": {
+    "accuracy": 0.9839600958482078,
+    "f1_macro": 0.9850015490827508,
+    "f1_weighted": 0.9839397724323944,
+    "mcc": 0.9757133572755209,
+    "precision_macro": 0.9841543514853636,
+    "recall_macro": 0.9860618505073214,
+    "classification_report": {
+      "Malware": {
+        "precision": 0.9896672670395298,
+        "recall": 0.9979925437338687,
+        "f1-score": 0.9938124702522608,
+        "support": 10461.0
+      },
+      "Routing": {
+        "precision": 0.992909581477066,
+        "recall": 0.9672962895042484,
+        "f1-score": 0.9799355957394105,
+        "support": 16359.0
+      },
+      "Injection": {
+        "precision": 0.9698862059394948,
+        "recall": 0.9928967182838472,
+        "f1-score": 0.9812565812565812,
+        "support": 14078.0
+      },
+      "accuracy": 0.9839600958482078,
+      "macro avg": {
+        "precision": 0.9841543514853636,
+        "recall": 0.9860618505073214,
+        "f1-score": 0.9850015490827508,
+        "support": 40898.0
+      },
+      "weighted avg": {
+        "precision": 0.9841550963641267,
+        "recall": 0.9839600958482078,
+        "f1-score": 0.9839397724323944,
+        "support": 40898.0
+      }
+    }
+  },
+  "representation": {}
+}

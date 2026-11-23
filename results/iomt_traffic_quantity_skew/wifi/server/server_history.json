@@ -1,0 +1,18 @@
+[
+  {
+    "round": 1,
+    "n_clients": 2,
+    "agg_loss": 0.01070657109183671,
+    "agg_acc": 0.11161541101256103,
+    "total_energy_j": 1303.7653,
+    "total_comm_mb": 0.9136
+  },
+  {
+    "round": 2,
+    "n_clients": 2,
+    "agg_loss": 0.005871642943227769,
+    "agg_acc": 0.18097041862408092,
+    "total_energy_j": 2568.3513,
+    "total_comm_mb": 1.8359
+  }
+]

@@ -1,0 +1,72 @@
+/scratch/myacoubi/private/ondemand/data/sys/myjobs/Q1_FedProx/travail_IOTIDS_complet_quantity_data_et_code/FedPer-Prox-XAI_Flower/FedPer_Flower_Complete/.venv/lib/python3.13/site-packages/torch/cuda/__init__.py:241: UserWarning: CUDA initialization: The NVIDIA driver on your system is too old (found version 12090). Please update your GPU driver by downloading and installing a new version from the URL: http://www.nvidia.com/Download/index.aspx Alternatively, go to: https://pytorch.org to install a PyTorch version that has been compiled with your version of the CUDA driver. (Triggered internally at /__w/pytorch/pytorch/c10/cuda/CUDAFunctions.cpp:119.)
+  return torch._C._cuda_getDeviceCount() > 0
+======================================================================
+  R1.2 — FEATURE REDUCTION EXPERIMENT
+======================================================================
+  Network  : WIFI
+  k values : [3, 5, 7, 10, 15, 20, 24]
+  Epochs   : 30
+  Device   : cpu
+======================================================================
+
+  Loading SHAP feature ranking...
+  Loaded 24 features from SHAP
+  Top-5 features: ['f18', 'f6', 'f3', 'f17', 'f5']
+  k values to test: [3, 5, 7, 10, 15, 20, 24] (max features: 24)
+
+  k=3 features: ['f18', 'f6', 'f3']
+    Client 0: Acc=0.6936  F1=0.3197  MCC=0.5964  (241.9s)
+    Client 1: Acc=0.6943  F1=0.3188  MCC=0.5969  (119.0s)
+    Client 2: Acc=0.6945  F1=0.3219  MCC=0.5976  (72.9s)
+    Client 3: Acc=0.6924  F1=0.3185  MCC=0.5943  (48.3s)
+
+  k=5 features: ['f18', 'f6', 'f3', 'f17', 'f5']
+    Client 0: Acc=0.8504  F1=0.6804  MCC=0.8002  (237.7s)
+    Client 1: Acc=0.8485  F1=0.6617  MCC=0.7991  (116.1s)
+    Client 2: Acc=0.8483  F1=0.6630  MCC=0.7991  (69.9s)
+    Client 3: Acc=0.8542  F1=0.7061  MCC=0.8016  (46.4s)
+
+  k=7 features: ['f18', 'f6', 'f3', 'f17', 'f5', 'f1', 'f23']
+    Client 0: Acc=0.9746  F1=0.9544  MCC=0.9651  (273.1s)
+    Client 1: Acc=0.9735  F1=0.9523  MCC=0.9636  (136.9s)
+    Client 2: Acc=0.9740  F1=0.9532  MCC=0.9643  (80.6s)
+    Client 3: Acc=0.9753  F1=0.9553  MCC=0.9660  (54.3s)
+
+  k=10 features: ['f18', 'f6', 'f3', 'f17', 'f5', 'f1', 'f23', 'f13', 'f11', 'f16']
+    Client 0: Acc=0.9745  F1=0.9543  MCC=0.9650  (272.6s)
+    Client 1: Acc=0.9729  F1=0.9513  MCC=0.9628  (134.2s)
+    Client 2: Acc=0.9741  F1=0.9534  MCC=0.9644  (82.3s)
+    Client 3: Acc=0.9751  F1=0.9550  MCC=0.9657  (54.4s)
+
+  k=15 features: ['f18', 'f6', 'f3', 'f17', 'f5', 'f1', 'f23', 'f13', 'f11', 'f16', 'f0', 'f7', 'f14', 'f2', 'f15']
+    Client 0: Acc=0.9958  F1=0.9925  MCC=0.9942  (347.3s)
+    Client 1: Acc=0.9956  F1=0.9921  MCC=0.9938  (171.4s)
+    Client 2: Acc=0.9955  F1=0.9920  MCC=0.9937  (103.8s)
+    Client 3: Acc=0.9953  F1=0.9916  MCC=0.9935  (68.7s)
+
+  k=20 features: ['f18', 'f6', 'f3', 'f17', 'f5', 'f1', 'f23', 'f13', 'f11', 'f16', 'f0', 'f7', 'f14', 'f2', 'f15', 'f8', 'f12', 'f9', 'f22', 'f21']
+    Client 0: Acc=0.9958  F1=0.9925  MCC=0.9942  (348.1s)
+    Client 1: Acc=0.9955  F1=0.9921  MCC=0.9938  (172.7s)
+    Client 2: Acc=0.9954  F1=0.9919  MCC=0.9937  (103.8s)
+    Client 3: Acc=0.9953  F1=0.9916  MCC=0.9935  (68.8s)
+
+  k=24 features: ['f18', 'f6', 'f3', 'f17', 'f5', 'f1', 'f23', 'f13', 'f11', 'f16', 'f0', 'f7', 'f14', 'f2', 'f15', 'f8', 'f12', 'f9', 'f22', 'f21', 'f19', 'f20', 'f10', 'f4']
+    Client 0: Acc=0.9958  F1=0.9925  MCC=0.9942  (349.5s)
+    Client 1: Acc=0.9956  F1=0.9921  MCC=0.9938  (172.7s)
+    Client 2: Acc=0.9955  F1=0.9920  MCC=0.9937  (104.3s)
+    Client 3: Acc=0.9953  F1=0.9916  MCC=0.9935  (69.0s)
+    Saved figure: results/feature_reduction/feature_reduction_curve.png
+
+  ───────────────────────────────────────────────────────
+  FEATURE REDUCTION SUMMARY
+  ───────────────────────────────────────────────────────
+     k      Accuracy      Macro-F1           MCC
+     3  0.6937+/-0.0008  0.3197+/-0.0013  0.5963+/-0.0012
+     5  0.8504+/-0.0024  0.6778+/-0.0179  0.8000+/-0.0010
+     7  0.9744+/-0.0007  0.9538+/-0.0012  0.9647+/-0.0009
+    10  0.9742+/-0.0008  0.9535+/-0.0014  0.9644+/-0.0011
+    15  0.9955+/-0.0002  0.9920+/-0.0003  0.9938+/-0.0002
+    20  0.9955+/-0.0002  0.9920+/-0.0003  0.9938+/-0.0002
+    24  0.9955+/-0.0002  0.9920+/-0.0003  0.9938+/-0.0002
+
+  Saved to: results/feature_reduction/

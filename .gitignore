@@ -1,0 +1,31 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+
+# Environments
+.venv/
+venv/
+env/
+
+# Raw datasets — place your own CSVs under data/raw/<dataset>/<regime>/,
+# never commit them (size and license reasons)
+data/raw/**/*.csv
+
+# Generated per-client partitions — regenerate with scripts/csv_to_npy.py
+data/client_datasets/**/*.npy
+data/client_datasets/**/*.pkl
+data/client_datasets/**/meta.json
+!data/client_datasets/.gitkeep
+
+# Trained model checkpoints (not required to verify reported metrics/figures)
+*.pt
+*.ckpt
+
+# Noisy per-run logs (kept: the small JSON/tex/csv/png result artifacts under results/)
+logs/*.log
+logs/**/*.log
+*.log
+
+# OS / editor
+.DS_Store
+.vscode/

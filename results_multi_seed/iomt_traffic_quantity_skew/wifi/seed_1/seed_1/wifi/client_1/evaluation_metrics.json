@@ -1,0 +1,68 @@
+{
+  "classification": {
+    "accuracy": 0.99552,
+    "f1_macro": 0.9920480737188786,
+    "f1_weighted": 0.9955147488620083,
+    "mcc": 0.993792705955203,
+    "precision_macro": 0.9925638909389818,
+    "recall_macro": 0.9920726659537001,
+    "classification_report": {
+      "Normal": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 3110.0
+      },
+      "DoS": {
+        "precision": 1.0,
+        "recall": 0.9993546305259762,
+        "f1-score": 0.999677211103938,
+        "support": 3099.0
+      },
+      "Vulnerability_Analysis": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 3134.0
+      },
+      "Malware": {
+        "precision": 0.9337115556882651,
+        "recall": 1.0,
+        "f1-score": 0.9657195799876467,
+        "support": 3127.0
+      },
+      "Routing": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 25010.0
+      },
+      "MITM": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 3142.0
+      },
+      "Injection": {
+        "precision": 1.0,
+        "recall": 0.9292993630573249,
+        "f1-score": 0.9633542423241994,
+        "support": 3140.0
+      },
+      "accuracy": 0.99552,
+      "macro avg": {
+        "precision": 0.9925638909389818,
+        "recall": 0.9920726659537001,
+        "f1-score": 0.9920480737188786,
+        "support": 50000.0
+      },
+      "weighted avg": {
+        "precision": 0.9958143461542337,
+        "recall": 0.99552,
+        "f1-score": 0.9955147488620083,
+        "support": 50000.0
+      }
+    }
+  },
+  "representation": {}
+}

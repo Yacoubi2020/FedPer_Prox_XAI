@@ -1,0 +1,49 @@
+
+% Requires \usepackage{algorithm, algorithmic}
+\begin{algorithm}[t]
+\caption{FedPer-Prox-XAI Training}
+\label{alg:fedper_prox_xai}
+\begin{algorithmic}[1]
+\REQUIRE $K$ clients with local datasets $\{D_k\}_{k=1}^K$,
+         $T$ rounds, $E$ local epochs, learning rate $\eta$,
+         proximal weight $\mu$, aggregation temperature $\tau$
+\ENSURE Shared backbone $\theta_B^*$, personalized heads $\{\theta_{H_k}^*\}$
+
+\STATE \textbf{Server:}
+\STATE Initialize backbone $\theta_B^{(0)}$
+\FOR{$t = 1, \ldots, T$}
+    \STATE Broadcast $\theta_B^{(t-1)}$ to all $K$ clients
+    \FOR{each client $k$ \textbf{in parallel}}
+        \STATE $\theta_{B_k}^{(t)}, n_k \leftarrow \textsc{ClientUpdate}(k, \theta_B^{(t-1)})$
+    \ENDFOR
+    \STATE Compute weights: $w_k = n_k^{\tau} / \sum_j n_j^{\tau}$
+    \STATE Aggregate: $\theta_B^{(t)} = \sum_k w_k \cdot \theta_{B_k}^{(t)}$
+\ENDFOR
+
+\STATE
+\STATE \textbf{ClientUpdate}$(k, \theta_B)$:
+\STATE $\theta_{B_k} \leftarrow \theta_B$ \hfill (receive backbone)
+\STATE $\theta_{H_k} \leftarrow$ local head \hfill (keep personalized)
+\FOR{$e = 1, \ldots, E$}
+    \FOR{mini-batch $(X, y) \in D_k$}
+        \STATE $\hat{y} = f_{\theta_{H_k}}(f_{\theta_{B_k}}(X))$ \hfill (forward pass)
+        \STATE $\mathcal{L}_{\text{task}} = \text{FocalLoss}(\hat{y}, y; \alpha, \gamma)$
+        \STATE $\mathcal{L}_{\text{prox}} = \frac{\mu}{2} \|\theta_{B_k} - \theta_B\|^2$
+        \STATE $\mathcal{L} = \mathcal{L}_{\text{task}} + \mathcal{L}_{\text{prox}}$
+        \STATE $\theta_{B_k}, \theta_{H_k} \leftarrow \theta_{B_k}, \theta_{H_k} - \eta \nabla \mathcal{L}$
+    \ENDFOR
+\ENDFOR
+\RETURN $\theta_{B_k}, n_k$ \hfill (upload backbone only)
+
+\STATE
+\STATE \textbf{SHAP Explainability (post-training):}
+\FOR{each client $k$}
+    \FOR{each class $c$}
+        \STATE $\phi_c^{(k)} = \frac{1}{|X_{\text{test}}|} \sum_{x} |x \odot \nabla_x f_c(x)|$ \hfill (Gradient $\times$ Input)
+    \ENDFOR
+    \STATE Aggregate: $\bar{\phi}^{(k)} = \frac{1}{C} \sum_c \phi_c^{(k)}$
+\ENDFOR
+\STATE Global consensus: $\Phi = \frac{\sum_k n_k \bar{\phi}^{(k)}}{\sum_k n_k}$
+\STATE Cross-client CV: $\text{CV}_j = \text{std}(\bar{\phi}_j^{(1)}, \ldots, \bar{\phi}_j^{(K)}) / \Phi_j$
+\end{algorithmic}
+\end{algorithm}

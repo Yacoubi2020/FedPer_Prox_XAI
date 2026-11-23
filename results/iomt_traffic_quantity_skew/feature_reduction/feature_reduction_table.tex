@@ -1,0 +1,41 @@
+% Requires \usepackage{booktabs}
+\begin{table}[t]
+\centering
+\caption{Performance with top-$k$ SHAP-ranked features. Values as mean $\pm$ std across 4 clients.}
+\label{tab:feature_reduction}
+\begin{tabular}{cccccc}
+\toprule
+$k$ & Accuracy & Macro-F1 & MCC & Bal.\,Acc. & Precision \\
+\midrule
+3 & 0.6937$\pm$0.0008 & 0.3197$\pm$0.0013 & 0.5963$\pm$0.0012 & 0.4561$\pm$0.0006 & 0.3546$\pm$0.0008 \\
+5 & 0.8504$\pm$0.0024 & 0.6778$\pm$0.0179 & 0.8000$\pm$0.0010 & 0.7342$\pm$0.0042 & 0.6683$\pm$0.0288 \\
+7 & 0.9744$\pm$0.0007 & 0.9538$\pm$0.0012 & 0.9647$\pm$0.0009 & 0.9543$\pm$0.0012 & 0.9612$\pm$0.0007 \\
+10 & 0.9742$\pm$0.0008 & 0.9535$\pm$0.0014 & 0.9644$\pm$0.0011 & 0.9539$\pm$0.0015 & 0.9606$\pm$0.0011 \\
+15 & 0.9955$\pm$0.0002 & 0.9920$\pm$0.0003 & 0.9938$\pm$0.0002 & 0.9921$\pm$0.0003 & 0.9926$\pm$0.0003 \\
+20 & 0.9955$\pm$0.0002 & 0.9920$\pm$0.0003 & 0.9938$\pm$0.0002 & 0.9921$\pm$0.0003 & 0.9925$\pm$0.0003 \\
+24 & 0.9955$\pm$0.0002 & 0.9920$\pm$0.0003 & 0.9938$\pm$0.0002 & 0.9921$\pm$0.0003 & 0.9926$\pm$0.0003 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[t]
+\centering
+\caption{Top-10 features ranked by SHAP importance (averaged across all clients).}
+\label{tab:feature_ranking}
+\begin{tabular}{clc}
+\toprule
+Rank & Feature & Importance \\
+\midrule
+1 & \texttt{f18} & 44.107316 \\
+2 & \texttt{f6} & 13.283471 \\
+3 & \texttt{f3} & 8.328172 \\
+4 & \texttt{f17} & 7.654312 \\
+5 & \texttt{f5} & 7.357211 \\
+6 & \texttt{f1} & 7.118080 \\
+7 & \texttt{f23} & 4.840987 \\
+8 & \texttt{f13} & 4.705796 \\
+9 & \texttt{f11} & 4.296189 \\
+10 & \texttt{f16} & 3.708476 \\
+\bottomrule
+\end{tabular}
+\end{table}

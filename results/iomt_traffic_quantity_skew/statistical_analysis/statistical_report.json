@@ -1,0 +1,136 @@
+{
+  "statistical_tests": {
+    "note": "Insufficient seeds"
+  },
+  "non_iid_impact": {
+    "wifi": {
+      "accuracy": {
+        "mean": 0.9874,
+        "std": 0.0009669539802907028,
+        "min": 0.986,
+        "max": 0.9886,
+        "range": 0.0026000000000000467,
+        "cv": 0.0009792930730106368
+      },
+      "f1_macro": {
+        "mean": 0.915625,
+        "std": 0.005721614719639916,
+        "min": 0.9106,
+        "max": 0.9253,
+        "range": 0.014700000000000046,
+        "cv": 0.006248862492439499
+      },
+      "mcc": {
+        "mean": 0.9825499999999999,
+        "std": 0.00132947358003081,
+        "min": 0.9806,
+        "max": 0.9842,
+        "range": 0.0035999999999999366,
+        "cv": 0.001353084911740685
+      },
+      "client_class_distribution": {
+        "client_0": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "client_1": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "client_2": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "client_3": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      "n_clients": 4
+    }
+  },
+  "comm_accuracy_tradeoff": {
+    "FedAvg": {
+      "params_shared": 50503,
+      "bytes_per_round_per_client": 202012,
+      "kb_per_round_per_client": 197.27734375,
+      "comm_reduction_vs_fedavg": 0.0
+    },
+    "FedProx": {
+      "params_shared": 50503,
+      "bytes_per_round_per_client": 202012,
+      "kb_per_round_per_client": 197.27734375,
+      "comm_reduction_vs_fedavg": 0.0
+    },
+    "FedPer": {
+      "params_shared": 48192,
+      "bytes_per_round_per_client": 192768,
+      "kb_per_round_per_client": 188.25,
+      "comm_reduction_vs_fedavg": 0.04575965784210834
+    },
+    "FedPer-Prox-XAI": {
+      "params_shared": 48192,
+      "bytes_per_round_per_client": 192768,
+      "kb_per_round_per_client": 188.25,
+      "comm_reduction_vs_fedavg": 0.04575965784210834
+    }
+  },
+  "convergence": {
+    "note": "No per-round data"
+  },
+  "ablation": {
+    "variables": {
+      "FEDPER_MODE": {
+        "description": "Toggle backbone-only (FedPer) vs full-model (FedAvg) aggregation",
+        "values": [
+          "fedper (default)",
+          "fedavg"
+        ],
+        "env_var": "FEDPER_MODE"
+      },
+      "USE_FOCAL_LOSS": {
+        "description": "Toggle FocalLoss vs standard CrossEntropy",
+        "values": [
+          "1 = FocalLoss (default)",
+          "0 = CrossEntropy"
+        ],
+        "env_var": "USE_FOCAL_LOSS"
+      },
+      "mu_prox": {
+        "description": "Proximal term weight (0 = no regularization)",
+        "values": [
+          "0.01 (default)",
+          "0.0 (FedPer without prox)"
+        ],
+        "config": "training.mu_prox"
+      }
+    },
+    "combinations_tested": [
+      "FedAvg (FEDPER_MODE=fedavg, mu=0)",
+      "FedProx (FEDPER_MODE=fedavg, mu=0.01)",
+      "FedPer (FEDPER_MODE=fedper, mu=0)",
+      "FedPer-Prox (FEDPER_MODE=fedper, mu=0.01) [ours]",
+      "FedPer-Prox + CE (USE_FOCAL_LOSS=0)"
+    ]
+  }
+}

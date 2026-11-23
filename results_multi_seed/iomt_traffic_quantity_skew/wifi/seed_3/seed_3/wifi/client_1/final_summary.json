@@ -1,0 +1,14 @@
+{
+  "client_id": 1,
+  "final_acc": 0.9953033333333333,
+  "final_loss": 0.02801871589899063,
+  "test_acc": 0.99554,
+  "f1_macro": 0.9920836938824082,
+  "f1_weighted": 0.9955347489709403,
+  "mcc": 0.9938205383402636,
+  "separability_ratio": null,
+  "silhouette_score": null,
+  "energy_j": 10208.728,
+  "comm_mb": 10.2847,
+  "total_rounds": 30
+}
